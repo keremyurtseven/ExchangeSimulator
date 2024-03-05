@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Account    
+{% endblock %}
+
+{% block main %}
+    <form action="/account" method="post">
+        <div class="form-group">
+            Username: {{username}}
+        </div>
+            <input class="form-control" name="password" placeholder="New Password" type="password">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="confirmation" placeholder="New Password (again)" type="password">
+        </div>
+            <button class="btn btn-primary" type="submit">Change Password</button>
+        </div>
+    </form>
+{% endblock %}

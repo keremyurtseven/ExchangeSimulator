@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    {% if check=="buy" %}
+        <div class="alert alert-primary border center-text" role="alert">
+            !BOUGHT
+        </div>
+    {% elif check=="sell" %}
+        <div class="alert alert-primary border center-text" role="alert">
+            !SOLD
+        </div>
+    {% elif check=="password" %}
+        <div class="alert alert-primary border center-text" role="alert">
+            !PASSWORD CHANGED
+        </div>
+    {% endif %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="4"></td>
+                <td>{{totalCash | usd}}</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            {% for row in stocks %}
+                <tr>
+                    <td>{{row["symbol"]}}</td>
+                    <td>{{row["name"]}}</td>
+                    <td>{{row["share"]}}</td>
+                    <td>{{row["price"] | usd}}</td>
+                    <td>{{row["total"] | usd}}</td>
+                </tr>
+            {% endfor %}    
+                <tr>
+                    <td>CASH</td>
+                    <td colspan="3"></td>
+                    <td>{{money | usd}}</td>
+                </tr>
+        </tbody>
+    </table>
+{% endblock %}
